@@ -5,11 +5,13 @@
  *      Author: Greg Silverman
  */
 
+/**/
 
 #include <algorithm>
 #include <iostream>
 #include <vector>
 #include <map>
+#include <stdlib.h>
 
 template<typename T>
 std::ostream&
@@ -23,6 +25,7 @@ operator<<
 	p_ostream << std::endl;
 	return p_ostream;
 }
+
 template<typename T>
 std::ostream&
 operator<<
@@ -81,12 +84,18 @@ incrementer
 	}
 	return rc;
 }
-int main()
+
+int main(int argc,char **argv)
 {
+	if(argc!=2)
+	{
+		std::cout << "usage: " << argv[0] << "<integer>\n";
+		exit(0);
+	}
 	std::cout << std::boolalpha;
     std::vector<int> number;
 
-    const int N = 4;
+    const int N = atoi(argv[1]);
     const int SUMN = (N-1)*N/2;
     for(int i=0;i<N;++i)
     {
